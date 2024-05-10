@@ -1,0 +1,23 @@
+{% extends "pages/base.html" %}
+{% block title %}Search Results{% endblock title %}
+
+{% block main-content %}
+<div class="container my-5">
+    <h2>Search Results for "{{ query }}"</h2>
+    <div class="row">
+        {% for product in products %}
+            <div class="col text-center mb-4">
+                <a href="{% url 'product-detail' product.id %}" class="btn">
+                    <div>
+                        <img src="{{ product.product_image.url }}" width="300px" height="200px" />
+                        <div class="fw-bold">{{ product.title }}</div>
+                        <div class="fw-bold text-danger">
+                            LE.{{ product.discounted_price }}/- <small class="fw-light text-decoration-line-through">{{ product.selling_price }}</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock main-content %}

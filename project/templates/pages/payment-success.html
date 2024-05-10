@@ -1,0 +1,31 @@
+{% extends "pages/base.html" %}
+{% load static %}
+{% block title %}Patment success{% endblock title %}
+
+
+{% block main-content %}
+    <div class="container my-5">
+        <div class="row">
+            <h3>Welcome {{request.user.username|capfirst}}</h3>
+            <div class="col-sm-2 border-end">
+                <ul class="list-unstyled">
+                    <li class="d-grid">
+                        <a href="{% url 'profile' %}" class="btn btn-primary">Payment succedded</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-sm-9 offset-sm-1 text-center">
+                <h3>Congrats!! Your Order is on the way</h3>
+                <div>
+    
+                    <iframe src="https://giphy.com/embed/PijzuUzUhm7hcWinGn" width="200" height="200" frameBorder="0"
+
+                    class="giphy-embed" allowFullScreen></iframe>
+                </div>
+                <br><br>
+                <a href="{% url 'afterpayment' %}" class="btn btn-warning shadow px-5 py-2 ms-4">Confirm</a>
+            </div>
+        </div>
+    </div>
+{%endblock main-content%}

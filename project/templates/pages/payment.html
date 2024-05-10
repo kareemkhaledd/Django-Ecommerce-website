@@ -1,0 +1,41 @@
+{% extends "pages/base.html" %}
+{% load static %}
+
+{% block title %}Payment{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Payment Details</h1>
+    <hr>
+    <div class="row">
+        <div class="col-md-8">
+            <h2 class="mb-3">Cart Items:</h2>
+            <ul class="list-group mb-4">
+                {% for cart_item in cart_items %}
+                <li class="list-group-item">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="mb-0">{{ cart_item.product.title }}</h5>
+                            <p class="mb-0">Quantity: {{ cart_item.quantity }}</p>
+                        </div>
+                        <span class="badge bg-primary">{{ cart_item.product.discounted_price }}</span>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title mb-3">Total Amount:</h2>
+                    <h3 class="mb-4">{{ totalamount }}</h3>
+                    <hr>
+                    <div class="text-center">
+                        {{ paypal.render }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
